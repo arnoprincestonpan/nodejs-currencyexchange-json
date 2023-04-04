@@ -1,5 +1,6 @@
 // initialize fs to read/write later
 const fs = require("fs");
+const { v4: uuidv4 } = require("uuid")
 
 const getCurrencies = (req, res) => {
   let currencyJSON = fs.readFileSync("currency.json", "utf-8");
@@ -21,6 +22,26 @@ const getCurrencies = (req, res) => {
   }
 };
 
+const createCurrency = (req, res) => {
+  const currency = req.body
+  if(Object.keys(currency).length !== 0) {
+    let currencyJSON = fs.readFileSync("currency.json", "utf-8");
+    let currencies = JSON.parse(currencyJSON);
+    let newId = currencies.length + 1
+    while(currencies.find((currency) => currency.id == newId)) {
+      newId += 1
+    }
+    currencies.push({...currencies, id: newId, uuid: uuidv4() })
+    currencyJSON = JSON.stringify("currency.json", currencyJSON, "utf-8")
+    res.status(201).send(currency)
+  } else {
+    res.status(400).send({
+      message: "Please enter some information for the new currency."
+    })
+  }
+}
+
 module.exports = {
-  getCurrencies
+  getCurrencies,
+  createCurrency
 }

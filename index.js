@@ -13,7 +13,6 @@ app.use(cors())
 
 app.use("/", currencyRoute)
 
-
 app.get("/", (req, res) => {
     console.log("Server Node and Express")
     res.send("You are now connected. Serving Node Express.")
