@@ -1,92 +1,92 @@
 [
     {
-        "id" : 1,
-        "uuid" : "6dc036c2-56eb-4a93-9274-5f4186ffd441",
-        "abbreviation" : "USD",
-        "currencyName" : "United States Dollar",
-        "buyPrice" : 1.3,
-        "sellPrice" : 1.35,
-        "country" : "United States"
+        "id": 1,
+        "uuid": "6dc036c2-56eb-4a93-9274-5f4186ffd441",
+        "abbreviation": "USD",
+        "currencyName": "United States Dollar",
+        "buyPrice": 1.3,
+        "sellPrice": 1.35,
+        "country": "United States"
     },
     {
-        "id" : 2,
-        "uuid" : "780bfaa6-9007-4c14-a527-14615c2798ac",
-        "abbreviation" : "TWD",
-        "currencyName" : "New Taiwanese Dollar",
-        "buyPrice" : 0.044,
-        "sellPrice" : 0.045,
-        "country" : "Taiwan"
+        "id": 2,
+        "uuid": "780bfaa6-9007-4c14-a527-14615c2798ac",
+        "abbreviation": "TWD",
+        "currencyName": "New Taiwanese Dollar",
+        "buyPrice": 0.044,
+        "sellPrice": 0.045,
+        "country": "Taiwan"
     },
     {
-        "id" : 3,
-        "uuid" : "cc28a1bd-8b2e-403b-9567-0793d64a55e3",
-        "abbreviation" : "HKD",
-        "currencyName" : "Hong Kong Dollar",
-        "buyPrice" : 0.17,
-        "sellPrice" : 0.175,
-        "country" : "Hong Kong"
+        "id": 3,
+        "uuid": "cc28a1bd-8b2e-403b-9567-0793d64a55e3",
+        "abbreviation": "HKD",
+        "currencyName": "Hong Kong Dollar",
+        "buyPrice": 0.17,
+        "sellPrice": 0.175,
+        "country": "Hong Kong"
     },
     {
-        "id" : 4,
-        "uuid" : "6bb14419-52c7-4816-ada2-8f0af5d40dca",
-        "abbreviation" : "CNY",
-        "currencyName" : "Chinese Yuan",
-        "buyPrice" : 0.20,
-        "sellPrice" : 0.21,
-        "country" : "China"
+        "id": 4,
+        "uuid": "6bb14419-52c7-4816-ada2-8f0af5d40dca",
+        "abbreviation": "CNY",
+        "currencyName": "Chinese Yuan",
+        "buyPrice": 0.2,
+        "sellPrice": 0.21,
+        "country": "China"
     },
     {
-        "id" : 5,
-        "uuid" : "d61d699e-ffea-4738-bb54-5f54a14fd827",
-        "abbreviation" : "INR",
-        "currencyName" : "Indian Rupees",
-        "buyPrice" : 0.016,
-        "sellPrice" : 0.017,
-        "country" : "India"
+        "id": 5,
+        "uuid": "d61d699e-ffea-4738-bb54-5f54a14fd827",
+        "abbreviation": "INR",
+        "currencyName": "Indian Rupees",
+        "buyPrice": 0.016,
+        "sellPrice": 0.017,
+        "country": "India"
     },
     {
-        "id" : 6,
-        "uuid" : "faeef1f7-2cde-4b3e-af94-e7235bc6a60c",
-        "abbreviation" : "IRR",
-        "currencyName" : "Iranian Rial",
-        "buyPrice" : 0.000032,
-        "sellPrice" : 0.000033,
-        "country" : "Iran"
+        "id": 6,
+        "uuid": "faeef1f7-2cde-4b3e-af94-e7235bc6a60c",
+        "abbreviation": "IRR",
+        "currencyName": "Iranian Rial",
+        "buyPrice": 0.000032,
+        "sellPrice": 0.000033,
+        "country": "Iran"
     },
     {
-        "id" : 7,
-        "uuid" : "dded58a8-8e47-422f-88ec-1cc0aab55fba",
-        "abbreviation" : "KRW",
-        "currencyName" : "South Korean Won",
-        "buyPrice" : 0.0010,
-        "sellPrice" : 0.0011,
-        "country" : "South Korea"
+        "id": 7,
+        "uuid": "dded58a8-8e47-422f-88ec-1cc0aab55fba",
+        "abbreviation": "KRW",
+        "currencyName": "South Korean Won",
+        "buyPrice": 0.001,
+        "sellPrice": 0.0011,
+        "country": "South Korea"
     },
     {
-        "id" : 8,
-        "uuid" : "8df8db37-7fcf-42f9-b950-96086c83b3b1",
-        "abbreviation" : "MOP",
-        "currencyName" : "Macanese Pataca",
-        "buyPrice" : 0.17,
-        "sellPrice" : 0.175,
-        "country" : "Macau"
+        "id": 8,
+        "uuid": "8df8db37-7fcf-42f9-b950-96086c83b3b1",
+        "abbreviation": "MOP",
+        "currencyName": "Macanese Pataca",
+        "buyPrice": 0.17,
+        "sellPrice": 0.175,
+        "country": "Macau"
     },
     {
-        "id" : 9,
-        "uuid" : "3c0fc718-24f7-4e45-915b-b0c156884d39",
-        "abbreviation" : "UAH",
-        "currencyName" : "Ukrainian Hryvnia",
-        "buyPrice" : 0.037,
-        "sellPrice" : 0.038,
-        "country" : "Ukraine"
+        "id": 9,
+        "uuid": "3c0fc718-24f7-4e45-915b-b0c156884d39",
+        "abbreviation": "UAH",
+        "currencyName": "Ukrainian Hryvnia",
+        "buyPrice": 0.037,
+        "sellPrice": 0.038,
+        "country": "Ukraine"
     },
     {
-        "id" : 10,
-        "uuid" : "df5e43eb-e4a6-428a-b9e7-94d32282faef",
-        "abbreviation" : "JPY",
-        "currencyName" : "Japanese Yen",
-        "buyPrice" : 0.010,
-        "sellPrice" : 0.015,
-        "country" : "Japan"
+        "id": 10,
+        "uuid": "df5e43eb-e4a6-428a-b9e7-94d32282faef",
+        "abbreviation": "JPY",
+        "currencyName": "Japanese Yen",
+        "buyPrice": 0.01,
+        "sellPrice": 0.015,
+        "country": "Japan"
     }
 ]
