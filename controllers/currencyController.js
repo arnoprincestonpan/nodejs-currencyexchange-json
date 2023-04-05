@@ -29,16 +29,11 @@ const createCurrency = (req, res) => {
     // read json file and parse to JSON
     let currenciesjson = fs.readFileSync("currency.json", "utf-8");
     let currencies = JSON.parse(currenciesjson);
-
-    if (
-      currencies.filter(
-        (existing) => existing.abbreviation === currency.abbreviation
-      ) === undefined
-    ) {
+    if(!currencies.find((existing) => existing.abbreviation.toLowerCase() == currency.abbreviation.toLowerCase())) {
       // assume it is adding at the end of the file, make newId length of currencies + 1
       let newId = currencies.length + 1;
       // prevent same currencyId
-      while (currencies.find((currency) => currency.currencyId == newId)) {
+      while (currencies.find((currency) => currency.id == newId)) {
         newId += 1;
       }
       // add currency and use newId and then write to JSON file, return currency
@@ -48,17 +43,18 @@ const createCurrency = (req, res) => {
       res.status(201).send(currency);
     } else {
       // let user know that the currency abbreviation already exist, therefore the currency already exists
-      console.log(`${currency.abbreviation} already exists.`);
+      console.log(`${currency.abbreviation.toUpperCase()} already exists.`);
       res.status(403).send({
-        message: `${currency.abbreviation} already exists.`,
+        message: `${currency.abbreviation.toUpperCase()} already exists.`,
       });
     }
   } else {
     res.status(400).send({
-      message: "Please enter some information for currency.",
+      message: `Please enter some information for ${currency.abbreviation.toUpperCase()}.`,
     });
   }
 };
+
 
 const getCurrencyByAbbreviation = (req, res) => {
   let currencyJSON = fs.readFileSync("currency.json", "utf-8");
@@ -89,11 +85,34 @@ const deleteCurrencyByAbbreviation = (req, res) => {
     currencyJSON = JSON.stringify(currencies, null, 4)
     fs.writeFileSync("currency.json", currencyJSON, "utf-8")
     res.status(200).send({
-      message: `${req.params.abbreviation} successfully deleted.`
+      message: `${req.params.abbreviation.toUpperCase()} successfully deleted.`
     })
   } else {
     res.status(404).send({
-      message: `${req.params.abbreviation} not found.`
+      message: `${req.params.abbreviation.toUpperCase()} not found.`
+    })
+  }
+}
+
+const updateCurrencyByAbbreviation = (req, res) => {
+  let currencyJSON = fs.readFileSync("currency.json", "utf-8")
+  let currencies = JSON.parse(currencyJSON)
+  console.log(`${req.params.abbreviation}`)
+  let currencyIndex = currencies.findIndex((currency) => currency.abbreviation.toLowerCase() == req.body.abbreviation.toLowerCase())
+  if (currencyIndex !== -1) {
+    currencies[currencyIndex] = {
+      ...currencies[currencyIndex],
+      currencyName: req.body.currencyName,
+      buyPrice: req.body.buyPrice,
+      sellPrice: req.body.sellPrice,
+      country: req.body.country
+    }
+    res.status(200).send({
+      message: `${req.params.abbreviation.toUpperCase()} updated.`
+    })
+  } else {
+    res.status(404).send({
+      message: `${req.params.abbreviation.toUpperCase()} is not found.`
     })
   }
 }
@@ -102,5 +121,6 @@ module.exports = {
   getCurrencies,
   createCurrency,
   getCurrencyByAbbreviation,
-  deleteCurrencyByAbbreviation
+  deleteCurrencyByAbbreviation,
+  updateCurrencyByAbbreviation
 };
