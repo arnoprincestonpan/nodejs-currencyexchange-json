@@ -30,7 +30,11 @@ const createCurrency = (req, res) => {
     let currenciesjson = fs.readFileSync("currency.json", "utf-8");
     let currencies = JSON.parse(currenciesjson);
 
-    if (currencies.filter((existing) => existing.abbreviation === currency.abbreviation) === undefined) {
+    if (
+      currencies.filter(
+        (existing) => existing.abbreviation === currency.abbreviation
+      ) === undefined
+    ) {
       // assume it is adding at the end of the file, make newId length of currencies + 1
       let newId = currencies.length + 1;
       // prevent same currencyId
@@ -44,23 +48,26 @@ const createCurrency = (req, res) => {
       res.status(201).send(currency);
     } else {
       // let user know that the currency abbreviation already exist, therefore the currency already exists
-      console.log(`${currency.abbreviation} already exists.`)
+      console.log(`${currency.abbreviation} already exists.`);
       res.status(403).send({
-        message: `${currency.abbreviation} already exists.`
-      })
-    } 
+        message: `${currency.abbreviation} already exists.`,
+      });
+    }
   } else {
     res.status(400).send({
-      message: "Please enter some information for currency."
-    }) 
+      message: "Please enter some information for currency.",
+    });
   }
 };
 
 const getCurrencyByAbbreviation = (req, res) => {
   let currencyJSON = fs.readFileSync("currency.json", "utf-8");
   let currencies = JSON.parse(currencyJSON);
+  console.log(`${req.params.abbreviation}`);
   let currency = currencies.filter(
-    (currency) => currency.abbreviation == req.params.abbreviation
+    (currency) =>
+      currency.abbreviation.toLowerCase() ==
+      req.params.abbreviation.toLowerCase()
   );
   if (Object.keys(currency).length !== 0) {
     res.status(200).send(currency);
@@ -71,7 +78,29 @@ const getCurrencyByAbbreviation = (req, res) => {
   }
 };
 
+const deleteCurrencyByAbbreviation = (req, res) => {
+  let currencyJSON = fs.readFileSync("currency.json", "utf-8")
+  let currencies = JSON.parse(currencyJSON)
+  console.log(`${req.params.abbreviation}`)
+  let currency = currencies.filter((currency) => currency.abbreviation.toLowerCase() == req.params.abbreviation.toLowerCase())
+  [0]
+  if(currency !== undefined) {
+    currencies = currencies.filter((currency) => currency.abbreviation.toLowerCase() !== req.params.abbreviation.toLowerCase())
+    currencyJSON = JSON.stringify(currencies, null, 4)
+    fs.writeFileSync("currency.json", currencyJSON, "utf-8")
+    res.status(200).send({
+      message: `${req.params.abbreviation} successfully deleted.`
+    })
+  } else {
+    res.status(404).send({
+      message: `${req.params.abbreviation} not found.`
+    })
+  }
+}
+
 module.exports = {
   getCurrencies,
   createCurrency,
+  getCurrencyByAbbreviation,
+  deleteCurrencyByAbbreviation
 };
