@@ -1,14 +1,14 @@
 {
-    "users" : [
+    "users": [
         {
-            "username" : "staff1",
-            "password" : "password1",
-            "role" : "manager"
+            "username": "staff1",
+            "password": "password1",
+            "role": "manager"
         }
     ],
-    "currencies" : [
+    "currencies": [
         {
-            "symbol" : "$",
+            "symbol": "$",
             "abbreviation": "USD",
             "currencyName": "United States Dollar",
             "buyPrice": "1.3",
@@ -18,7 +18,7 @@
             "uuid": "1d06a402-44d4-485f-ba4c-c285ee66f6a5"
         },
         {
-            "symbol" : "NT$",
+            "symbol": "NT$",
             "id": 2,
             "uuid": "780bfaa6-9007-4c14-a527-14615c2798ac",
             "abbreviation": "TWD",
@@ -28,7 +28,7 @@
             "country": "Taiwan"
         },
         {
-            "symbol" : "HK$",
+            "symbol": "HK$",
             "id": 3,
             "uuid": "cc28a1bd-8b2e-403b-9567-0793d64a55e3",
             "abbreviation": "HKD",
@@ -38,7 +38,7 @@
             "country": "Hong Kong"
         },
         {
-            "symbol" : "¥",
+            "symbol": "¥",
             "id": 4,
             "uuid": "6bb14419-52c7-4816-ada2-8f0af5d40dca",
             "abbreviation": "CNY",
@@ -48,7 +48,7 @@
             "country": "China"
         },
         {
-            "symbol" : "₹",
+            "symbol": "₹",
             "id": 5,
             "uuid": "d61d699e-ffea-4738-bb54-5f54a14fd827",
             "abbreviation": "INR",
@@ -58,7 +58,7 @@
             "country": "India"
         },
         {
-            "symbol" : "﷼",
+            "symbol": "﷼",
             "id": 6,
             "uuid": "faeef1f7-2cde-4b3e-af94-e7235bc6a60c",
             "abbreviation": "IRR",
@@ -68,7 +68,7 @@
             "country": "Iran"
         },
         {
-            "symbol" : "₩",
+            "symbol": "₩",
             "id": 7,
             "uuid": "dded58a8-8e47-422f-88ec-1cc0aab55fba",
             "abbreviation": "KRW",
@@ -78,7 +78,7 @@
             "country": "South Korea"
         },
         {
-            "symbol" : "MOP$",
+            "symbol": "MOP$",
             "id": 8,
             "uuid": "8df8db37-7fcf-42f9-b950-96086c83b3b1",
             "abbreviation": "MOP",
@@ -88,7 +88,7 @@
             "country": "Macau"
         },
         {
-            "symbol" : "₴",
+            "symbol": "₴",
             "id": 9,
             "uuid": "3c0fc718-24f7-4e45-915b-b0c156884d39",
             "abbreviation": "UAH",
@@ -98,7 +98,7 @@
             "country": "Ukraine"
         },
         {
-            "symbol" : "¥",
+            "symbol": "¥",
             "id": 10,
             "uuid": "df5e43eb-e4a6-428a-b9e7-94d32282faef",
             "abbreviation": "JPY",
