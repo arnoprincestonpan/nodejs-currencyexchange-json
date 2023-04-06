@@ -8,11 +8,10 @@
     ],
     "currencies": [
         {
-            "symbol": "$",
             "abbreviation": "USD",
             "currencyName": "United States Dollar",
             "buyPrice": "1.3",
-            "sellPrice": "1.36",
+            "sellPrice": "1.35",
             "country": "United States",
             "id": 1,
             "uuid": "1d06a402-44d4-485f-ba4c-c285ee66f6a5"

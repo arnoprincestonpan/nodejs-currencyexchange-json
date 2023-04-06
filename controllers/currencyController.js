@@ -117,33 +117,29 @@ const deleteCurrencyByAbbreviation = (req, res) => {
   }
 }
 
-// const updateCurrencyByAbbreviation = (req, res) => {
-//   let currencyJSON = fs.readFileSync("data.json", "utf-8");
-//   let currencies = JSON.parse(currencyJSON);
-//   console.log(`${req.params.abbreviation}`);
-//   let currencyIndex = currencies.findIndex(
-//     (currency) =>
-//       currency.abbreviation.toLowerCase() == req.body.abbreviation.toLowerCase()
-//   );
-//   if (currencyIndex !== -1) {
-//     currencies[currencyIndex] = {
-//       ...currencies[currencyIndex],
-//       currencyName: req.body.currencyName,
-//       buyPrice: req.body.buyPrice,
-//       sellPrice: req.body.sellPrice,
-//       country: req.body.country,
-//     };
-//     currencyJSON = JSON.stringify(currencies, null, 4);
-//     fs.writeFileSync("data.json", currencyJSON, "utf-8");
-//     res.status(200).send({
-//       message: `${req.params.abbreviation.toUpperCase()} updated.`,
-//     });
-//   } else {
-//     res.status(404).send({
-//       message: `${req.params.abbreviation.toUpperCase()} is not found.`,
-//     });
-//   }
-// };
+// update currency by finding req.params.abbreviation and providing req.body
+const updateCurrencyByAbbreviation = (req, res) => {
+  const currencyIndex = dataObject.currencies.findIndex((currency) => currency.abbreviation.toLowerCase() === req.params.abbreviation.toLowerCase())
+  if(currencyIndex !== -1) {
+    dataObject.currencies[currencyIndex] = {
+      ...dataObject.currencies[currencyIndex],
+      symbol: req.body.symbol,
+      country: req.body.country,
+      currencyName: req.body.currencyName,
+      abbreviation: req.body.abbreviation,
+      buyPrice: req.body.buyPrice,
+      sellPrice: req.body.sellPrice
+    }
+    fs.writeFileSync("data.json", JSON.stringify(dataObject, null, 4))
+    res.status(200).send({
+      message: `${req.params.abbreviation.toUpperCase()} updated.`
+    })
+  } else {
+    res.status(404).send({
+      "message" : `${req.params.abbreviation.toUpperCase()} not found.`
+    })
+  }
+}
 
 module.exports = {
   getCurrencies,
