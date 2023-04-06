@@ -107,6 +107,8 @@ const updateCurrencyByAbbreviation = (req, res) => {
       sellPrice: req.body.sellPrice,
       country: req.body.country
     }
+    currencyJSON = JSON.stringify(currencies, null, 4)
+    fs.writeFileSync("currency.json", currencyJSON, "utf-8")
     res.status(200).send({
       message: `${req.params.abbreviation.toUpperCase()} updated.`
     })
