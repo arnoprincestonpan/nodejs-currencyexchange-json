@@ -4,20 +4,21 @@ const {
   createCurrency,
   getCurrencyByAbbreviation,
   deleteCurrencyByAbbreviation,
-  updateCurrencyByAbbreviation
+  updateCurrencyByAbbreviation,
+  errorHandler
 } = require("../controllers/currencyController");
 
 const router = express.Router();
 
 // get all currencies
-router.get("/api/currencies/", getCurrencies);
+router.get("/api/currencies/", errorHandler, getCurrencies);
 // create a new currency
-router.post("/api/currencies/", createCurrency);
+router.post("/api/currencies/", errorHandler, createCurrency);
 // get single currency
-router.get("/api/currency/:abbreviation", getCurrencyByAbbreviation);
+router.get("/api/currency/:abbreviation", errorHandler, getCurrencyByAbbreviation);
 // delete single currency
-router.delete("/api/currency/:abbreviation", deleteCurrencyByAbbreviation)
+router.delete("/api/currency/:abbreviation", errorHandler, deleteCurrencyByAbbreviation)
 // update single currency
-router.put("/api/currency/:abbreviation", updateCurrencyByAbbreviation)
+router.put("/api/currency/:abbreviation", errorHandler, updateCurrencyByAbbreviation)
 
 module.exports = router;
