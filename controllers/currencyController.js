@@ -163,15 +163,17 @@ const updateCurrencyByAbbreviation = (req, res, next) => {
         req.params.abbreviation.toLowerCase()
     );
     if (currencyIndex !== -1) {
-      dataObject.currencies[currencyIndex] = {
-        ...dataObject.currencies[currencyIndex],
-        symbol: req.body.symbol,
-        country: req.body.country,
-        currencyName: req.body.currencyName,
-        abbreviation: req.body.abbreviation,
-        buyPrice: req.body.buyPrice,
-        sellPrice: req.body.sellPrice,
+      let updatedCurrency = dataObject.currencies[currencyIndex]
+      updatedCurrency = {
+        ...updatedCurrency,
+        symbol: req.body.symbol ? req.body.symbol : updatedCurrency.symbol,
+        country: req.body.country ? req.body.country : updatedCurrency.country,
+        currencyName: req.body.currencyName ? req.body.currencyName : updatedCurrency.currencyName,
+        abbreviation: req.body.abbreviation ? req.body.abbreviation : updatedCurrency.abbreviation,
+        buyPrice: req.body.buyPrice ? req.body.buyPrice : updatedCurrency.buyPrice,
+        sellPrice: req.body.sellPrice ? req.body.sellPrice : updatedCurrency.sellPrice,
       };
+      dataObject.currencies[currencyIndex] = updatedCurrency
       fs.writeFileSync("data.json", JSON.stringify(dataObject, null, 4));
       res.status(200).send({
         message: `${req.params.abbreviation.toUpperCase()} updated.`,

@@ -3,6 +3,14 @@ const dataObject = require("../data.json")
 let Users = dataObject.users
 const fs = require('fs')
 
+const getUsernames = (req, res, next) => {
+    try{
+
+    } catch (error) {
+
+    }
+}
+
 const addUser = (req, res, next) => {
     try {
         const newUser = req.body
@@ -34,9 +42,13 @@ const addUser = (req, res, next) => {
 
 const deleteUser = (req, res, next) => {
     try {
-        const user = Users.findIndex(user => user.username.toLowerCase() === req.params.toLowerCase())
-        if(user !== -1){
-
+        const userIndex = Users.findIndex(user => user.username.toLowerCase() === req.params.toLowerCase())
+        if(userIndex !== -1){
+            Users.pop(Users[userIndex])
+            fs.writeFileSync("data.json", JSON.stringify(Users, null, 4))
+            res.status(200).send({
+                message: `${Users[userIndex].abbreviation.toUpperCase()} deleted.`
+            })
         }
     } catch (error) {
         next(error)
@@ -44,6 +56,7 @@ const deleteUser = (req, res, next) => {
 }
 
 module.exports = {
+    getUsernames,
     addUser,
     deleteUser
 }

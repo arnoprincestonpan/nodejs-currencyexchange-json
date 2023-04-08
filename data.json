@@ -11,18 +11,24 @@
             "password": "$2b$10$EN5tC3gD0hM3jJw2SvxZ1OQZ2K9bP5l0Vd4bYGzdFyVIfOjK0/n7m",
             "email": "user2@example.com",
             "role": "staff"
+        },
+        {
+            "username": "staff",
+            "password": "1234",
+            "role": "staff",
+            "email": "staff@test.ca"
         }
     ],
     "currencies": [
         {
-            "abbreviation": "USD",
+            "symbol": "$",
+            "id" : 1,
+            "uuid" : "32f53a23-1146-460e-aaab-c66b2be6d08f",
             "currencyName": "United States Dollar",
-            "buyPrice": "1.3",
-            "sellPrice": "1.35",
-            "country": "United States",
-            "id": 1,
-            "uuid": "1d06a402-44d4-485f-ba4c-c285ee66f6a5",
-            "symbol": "$"
+            "abbreviation": "USD",
+            "buyPrice": "1.30",
+            "sellPrice": "1.36",
+            "country": "United States"
         },
         {
             "symbol": "NT$",
