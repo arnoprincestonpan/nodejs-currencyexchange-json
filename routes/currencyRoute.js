@@ -5,8 +5,8 @@ const {
   getCurrencyByAbbreviation,
   deleteCurrencyByAbbreviation,
   updateCurrencyByAbbreviation,
-  errorHandler
 } = require("../controllers/currencyController");
+const { errorHandler } = require("../controllers/errorHandler")
 
 const router = express.Router();
 

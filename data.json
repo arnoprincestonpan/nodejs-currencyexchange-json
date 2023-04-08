@@ -113,12 +113,6 @@
             "buyPrice": 0.01,
             "sellPrice": 0.015,
             "country": "Japan"
-        },
-        {
-            "uuid": "76774f16-1be7-46a4-aeca-2d76f0a28757",
-            "id": 11,
-            "buyPrice": "0.069",
-            "sellPrice": "0.071"
         }
     ]
 }

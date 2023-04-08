@@ -5,27 +5,6 @@ const dataObject = require("../data.json");
 // unique id generated
 const { v4: uuidv4 } = require("uuid");
 
-// error handler
-const errorHandler = (err, req, res, next) => {
-  if (err) {
-    console.error(err.message);
-    if (err.status === 404) {
-      res.status({
-        error: err.message,
-      });
-    } else if (err.status === 400) {
-      res.status({
-        error: err.message,
-      });
-    } else {
-      res.status(500).send({
-        error: err.message,
-      });
-    }
-  } else {
-    next();
-  }
-};
 
 // get all currencies
 const getCurrencies = (req, res, next) => {
@@ -210,7 +189,6 @@ const updateCurrencyByAbbreviation = (req, res, next) => {
 };
 
 module.exports = {
-  errorHandler,
   getCurrencies,
   createCurrency,
   getCurrencyByAbbreviation,

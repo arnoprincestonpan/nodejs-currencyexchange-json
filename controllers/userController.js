@@ -3,27 +3,6 @@ const dataObject = require("../data.json")
 let Users = dataObject.users
 const fs = require('fs')
 
-const errorHandler = (err, res, req, next) => {
-    if (err) {
-        console.error(err.message);
-        if (err.status === 404) {
-          res.status({
-            error: err.message,
-          });
-        } else if (err.status === 400) {
-          res.status({
-            error: err.message,
-          });
-        } else {
-          res.status(500).send({
-            error: err.message,
-          });
-        }
-      } else {
-        next();
-      }
-}
-
 const addUser = (req, res, next) => {
     try {
         const newUser = req.body
@@ -53,6 +32,18 @@ const addUser = (req, res, next) => {
     }
 }
 
+const deleteUser = (req, res, next) => {
+    try {
+        const user = Users.findIndex(user => user.username.toLowerCase() === req.params.toLowerCase())
+        if(user !== -1){
+
+        }
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
-    addUser
+    addUser,
+    deleteUser
 }
