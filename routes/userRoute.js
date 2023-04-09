@@ -1,7 +1,7 @@
 const express = require("express")
 const dataObject = require("../data.json")
 const Users = dataObject.users
-const { addUser, deleteUser, getUsernames } = require("../controllers/userController")
+const { addUser, deleteUser, getUsernames, updateUserPassword } = require("../controllers/userController")
 const { errorHandler } = require("../controllers/errorHandler")
 
 const router = express.Router()
@@ -14,5 +14,8 @@ router.post("/api/users/", errorHandler, addUser)
 
 // delete user
 router.delete('/api/user/:abbreviation', errorHandler, deleteUser)
+
+// update user password
+router.patch("/api/user/", errorHandler, updateUserPassword)
 
 module.exports = router

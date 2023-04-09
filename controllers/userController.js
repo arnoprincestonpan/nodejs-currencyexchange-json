@@ -80,8 +80,40 @@ const deleteUser = (req, res, next) => {
     }
 }
 
+const updateUserPassword = (req, res, next) => {
+    try {
+        const userIndex = Users.findIndex(user => user.username.toLocaleLowerCase() === req.params.toLowerCase())
+        if(userIndex !== -1) {
+            let updatedUser = Users[userIndex]
+
+            bcrypt.genSaltSync(saltRounds, (err, hash) => {
+                if(err){
+                    throw err
+                } else {
+                    updatedUser = {
+                        ...Users[userIndex],
+                        "password" : req.body.password ? hash : updatedUser.password
+                    }
+                    Users[userIndex] = updatedUser
+                    fs.writeFileSync("data.json", JSON.stringify(null, dataObject, 4))
+                    res.status(200).send({
+                        message: `${req.params.username} updated.`
+                    })
+                }
+            })
+        } else {
+            const err = new Error(`${req.params.username} not found.`)
+            err.status = 404
+            next(err)
+        }
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
     getUsernames,
     addUser,
-    deleteUser
+    deleteUser,
+    updateUserPassword
 }
