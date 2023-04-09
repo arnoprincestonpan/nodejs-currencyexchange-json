@@ -8,9 +8,15 @@ const fs = require('fs')
 
 const getUsernames = (req, res, next) => {
     try {
-        
+        if(Users !== undefined || Users !== null) {
+            res.status(200).send(Users.map(users => users.username))
+        } else {
+            const err = new Error(`Check JSON file or Users property is empty.`)
+            err.status = 404
+            next(err)
+        }
     } catch (error) {
-
+        next(error)
     }
 }
 
