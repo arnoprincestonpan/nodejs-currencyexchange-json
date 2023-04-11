@@ -1,11 +1,9 @@
 require("dotenv").config()
-require('./controllers/auth/passport')
 const express = require("express")
 const bodyParser = require("body-parser")
 const cors = require("cors")
 const currencyRoute = require("./routes/currencyRoute")
 const userRoute = require('./routes/userRoute')
-const passport = require('passport')
 
 const app = express()
 const PORT = 5000
