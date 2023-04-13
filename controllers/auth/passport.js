@@ -5,33 +5,19 @@ const dataObject = require("../../data.json")
 const Users = dataObject.users
 
 // usernameField is like asking req.body for the field "email", kind of like req.body.email
-passport.use(new LocalStrategy(async(username, password, done) => {
-    const allUsers = [...Users, ...process.env.ADMIN.admins]
+passport.use(new LocalStrategy(async (username, password, done) => {
     try {
-        const user = allUsers.find((user) => user.username === username)
+        const user = await Users.find((user) => user.username === username)
         if(!user){
-            return done(null, false, {message: `No such username.`})
+            return done(null, false, {message : `No such username: ${username}`})
         }
-        if(process.env.ADMIN.admins.find(user) === user) {
-            const adminIndex = process.env.ADMIN.admins.findIndex(user)
-            const isMatch = await bcrypt.compare(password, process.env.ADMIN.admin[adminIndex].password)
-            if(isMatch){
-                return done(null, process.env.ADMIN.admins[adminIndex])
-            } else {
-                return done(null, false, {
-                    message : `Invalid password for admin user : ${user}`
-                })
-            }
+        const isMatch = await bcrypt.compare(password, user.password)
+        if(isMatch){
+            return done(null, user)
         } else {
-            const userIndex = Users.findIndex(user)
-            const isMatch = await bcrypt.compare(password, Users[userIndex].password)
-            if(isMatch){
-                return done(null, Users[userIndex])
-            } else {
-                return done(null, false, {
-                    message: `Invalid password for user: ${user}`
-                })
-            }
+            return done(null, false, {
+                message: `Invalid Password.`
+            })
         }
     } catch (error) {
         return done(error)
@@ -39,13 +25,21 @@ passport.use(new LocalStrategy(async(username, password, done) => {
 }))
 
 passport.serializeUser((user, done) => {
-    done(null, user.id)
+    done(null, user.username)
 })
 
-passport.deserializeUser((id, done) => {
-    Users.findById(id, (err, user) => {
-        done(err, user)
-    })
+passport.deserializeUser((username, done) => {
+    try {
+        const user = Users.find((user) => user.username === username)
+        if(!user){
+            return done(null, false, {
+                message: `No such user: ${username}`
+            })
+        }
+        return done(null, user)
+    } catch (error) {
+        return done(error)
+    }
 })
 
 module.exports = passport

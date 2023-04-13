@@ -20,7 +20,7 @@ router.get("/api/users/", errorHandler, getUsernames)
 router.post("/api/users/", errorHandler, addUser)
 
 // delete user
-router.delete('/api/user/:abbreviation', errorHandler, deleteUser)
+router.delete('/api/user/:username', errorHandler, deleteUser)
 
 // update user password
 router.patch("/api/user/", errorHandler, updateUserPassword)

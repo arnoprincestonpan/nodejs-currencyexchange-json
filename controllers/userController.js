@@ -69,7 +69,13 @@ const addUser = async (req, res, next) => {
         const user = { ...newUser, password: hashedPassword };
         Users.push(user);
         fs.writeFileSync("data.json", JSON.stringify(dataObject, null, 4));
-        res.status(201).send(newUser);
+        req.login(user, (err) => {
+          if(err){
+            next(err)
+          } else {
+            res.status(201).send(newUser)
+          }
+        })
       } else {
         const err = new Error(
           `Please enter username, password, email and role.`
@@ -82,19 +88,21 @@ const addUser = async (req, res, next) => {
       err.status = 400;
       next(err);
     }
-  } catch (error) {}
+  } catch (error) {
+    next(error)
+  }
 };
 
 const deleteUser = async (req, res, next) => {
   try {
     const userIndex = Users.findIndex(
-      (user) => user.username.toLowerCase() === req.params.toLowerCase()
+      (user) => user.username.toLowerCase() === req.params.username.toLowerCase()
     );
     if (userIndex !== -1) {
       Users.pop(Users[userIndex]);
-      fs.writeFileSync("data.json", JSON.stringify(Users, null, 4));
+      fs.writeFileSync("data.json", JSON.stringify({...dataObject, Users}, null, 4));
       res.status(200).send({
-        message: `${Users[userIndex].abbreviation.toUpperCase()} deleted.`,
+        message: `${req.params.username.toLowerCase()} deleted.`,
       });
     }
   } catch (error) {
@@ -105,7 +113,7 @@ const deleteUser = async (req, res, next) => {
 const updateUserPassword = async (req, res, next) => {
   try {
     const userIndex = Users.findIndex(
-      (user) => user.username.toLocaleLowerCase() === req.params.toLowerCase()
+      (user) => user.username.toLocaleLowerCase() === req.params.username.toLowerCase()
     );
     if (userIndex !== -1) {
       let updatedUser = Users[userIndex];

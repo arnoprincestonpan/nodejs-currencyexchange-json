@@ -17,13 +17,19 @@
             "password": "1234",
             "role": "staff",
             "email": "staff@test.ca"
+        },
+        {
+            "username": "test",
+            "password": "$2a$10$01Ds/.lAxvVsR2UCoH5hZOHK/W/apa15XOjI0bTq5cUT218VyN1Ya",
+            "role": "staff",
+            "email": "staff@test.ca"
         }
     ],
     "currencies": [
         {
             "symbol": "$",
-            "id" : 1,
-            "uuid" : "32f53a23-1146-460e-aaab-c66b2be6d08f",
+            "id": 1,
+            "uuid": "32f53a23-1146-460e-aaab-c66b2be6d08f",
             "currencyName": "United States Dollar",
             "abbreviation": "USD",
             "buyPrice": "1.30",
@@ -119,6 +125,26 @@
             "buyPrice": 0.01,
             "sellPrice": 0.015,
             "country": "Japan"
+        }
+    ],
+    "Users": [
+        {
+            "username": "user1",
+            "password": "$2b$10$EN5tC3gD0hM3jJw2SvxZ1OQZ2K9bP5l0Vd4bYGzdFyVIfOjK0/n7m",
+            "email": "user1@example.com",
+            "role": "manager"
+        },
+        {
+            "username": "user2",
+            "password": "$2b$10$EN5tC3gD0hM3jJw2SvxZ1OQZ2K9bP5l0Vd4bYGzdFyVIfOjK0/n7m",
+            "email": "user2@example.com",
+            "role": "staff"
+        },
+        {
+            "username": "staff",
+            "password": "1234",
+            "role": "staff",
+            "email": "staff@test.ca"
         }
     ]
 }
