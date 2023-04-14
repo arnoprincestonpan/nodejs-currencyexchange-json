@@ -36,7 +36,7 @@ const login = async (req, res, next) => {
 
 const logout = async (req, res, next) => {
   try {
-    await req.logout();
+    await req.logout(() => {});
     res.status(200).send("User logged out successfully.");
   } catch (error) {
     next(error);

@@ -23,6 +23,12 @@
             "password": "$2a$10$01Ds/.lAxvVsR2UCoH5hZOHK/W/apa15XOjI0bTq5cUT218VyN1Ya",
             "role": "staff",
             "email": "staff@test.ca"
+        },
+        {
+            "username": "arno",
+            "email": "arno@test.ca",
+            "role": "staff",
+            "password": "$2a$10$wHDV9q42I7bWrrYxKeJDs.HE9/XjzfmwE31tq4f/FlJKhMpCvRmoC"
         }
     ],
     "currencies": [
