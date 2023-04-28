@@ -68,7 +68,7 @@ const addUser = async (req, res, next) => {
         const hashedPassword = await bcrypt.hash(newUser.password, saltRounds);
         const user = { ...newUser, password: hashedPassword };
         Users.push(user);
-        fs.writeFileSync("data.json", JSON.stringify(dataObject, null, 4));
+        writeJSON(dataObject)
         req.login(user, (err) => {
           if(err){
             next(err)
@@ -100,7 +100,7 @@ const deleteUser = async (req, res, next) => {
     );
     if (userIndex !== -1) {
       Users.pop(Users[userIndex]);
-      fs.writeFileSync("data.json", JSON.stringify({...dataObject, Users}, null, 4));
+      writeJSON({...dataObject, Users})
       res.status(200).send({
         message: `${req.params.username.toLowerCase()} deleted.`,
       });
@@ -127,7 +127,7 @@ const updateUserPassword = async (req, res, next) => {
             password: req.body.password ? hash : updatedUser.password,
           };
           Users[userIndex] = updatedUser;
-          writeJSON()
+          writeJSON(dataObject)
           res.status(200).send({
             message: `${req.params.username} updated.`,
           });
@@ -143,8 +143,8 @@ const updateUserPassword = async (req, res, next) => {
   }
 };
 
-const writeJSON = () => {
-  fs.writeFileSync("data.json", JSON.stringify(null, dataObject, 4))
+const writeJSON = (JSONObject) => {
+  fs.writeFileSync("data.json", JSON.stringify(JSONObject, null, 4))
 }
 
 module.exports = {
