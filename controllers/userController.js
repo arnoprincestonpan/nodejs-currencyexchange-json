@@ -127,7 +127,7 @@ const updateUserPassword = async (req, res, next) => {
             password: req.body.password ? hash : updatedUser.password,
           };
           Users[userIndex] = updatedUser;
-          fs.writeFileSync("data.json", JSON.stringify(null, dataObject, 4));
+          writeJSON()
           res.status(200).send({
             message: `${req.params.username} updated.`,
           });
@@ -142,6 +142,10 @@ const updateUserPassword = async (req, res, next) => {
     next(error);
   }
 };
+
+const writeJSON = () => {
+  fs.writeFileSync("data.json", JSON.stringify(null, dataObject, 4))
+}
 
 module.exports = {
   getUsernames,
